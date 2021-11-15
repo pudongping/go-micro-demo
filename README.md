@@ -130,3 +130,31 @@ replace (
 {"level":"info","ts":"2021-11-16T02:23:01.727+0800","caller":"traceutil/trace.go:171","msg":"trace[214976224] put","detail":"{key:/micro/registry/Meet/Meet-ee5b8119-4ed0-474b-b948-86ee166325a2; req_size:614; response_revision:3; }","duration":"102.469459ms","start":"2021-11-16T02:23:01.623+0800","end":"2021-11-16T02:23:01.725+0800","steps":["trace[214976224] 'process raft request'  (duration: 25.521542ms)","trace[214976224] 'marshal mvccpb.KeyValue'  (duration: 76.424667ms)"],"step_count":2}
 
 ```
+
+## 测试
+
+> 注意要先开启 etcd 服务
+
+### 启动服务端
+
+```shell
+
+go run main.go --registry=etcd
+
+# output
+# 2021-11-16 03:10:54.791556 I | Transport [http] Listening on [::]:52109
+# 2021-11-16 03:10:54.791613 I | Broker [http] Connected to [::]:52110
+# 2021-11-16 03:10:54.791761 I | Registry [mdns] Registering node: Meet-900756d9-e27f-4fc8-b720-f0a2238c2ee4
+
+```
+
+### 启动客户端
+
+```shell
+
+go run client.go
+
+# output
+# response ==>   你好，Alex
+
+```
