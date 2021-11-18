@@ -31,6 +31,25 @@ source ~/.zshrc
 
 ```
 
+### 安装 protoc-gen-go
+
+```shell
+# 该依赖包是 protobuf 的 Go 语言实现
+go get -u github.com/golang/protobuf/protoc-gen-go
+```
+
+注意需要将 `$GOPATH/bin` 也放到系统路径下
+
+```shell
+# 编辑配置文件
+vim ~/.zshrc
+
+# 写入以下配置信息
+export PATH="$GOPATH/bin:$PATH"
+
+source ~/.zshrc
+```
+
 ## 使用 Etcd 作为注册中心
 
 ### 安装 Etcd
